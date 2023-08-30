@@ -1,4 +1,5 @@
 import string
+from tkinter import messagebox
 from tkinter import *
 import random
 
@@ -7,7 +8,7 @@ def generate_password():
     password_list = []
     password = ""
     character = string.ascii_letters + string.digits + string.punctuation
-    for _ in range(12):
+    for _ in range(random.randint(8, 16)):
         password_list.append(random.choice(character))
     for letter in password_list:
         password += letter
@@ -23,8 +24,7 @@ def save():
         file.write(f'{website} | {username} | {password}\n')
     password_entry.delete(0, END)
     website_entry.delete(0, END)
-
-
+    messagebox.showinfo(title='Result', message='Password saved')
 
 
 # ---------------------------- UI SETUP ------------------------------- #
